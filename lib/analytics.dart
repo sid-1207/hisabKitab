@@ -68,7 +68,6 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
              
         });
       });
-      data[]
     });
         FirebaseFirestore.instance
         .collection("users")
