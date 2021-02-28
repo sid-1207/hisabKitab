@@ -27,6 +27,12 @@ dependencies:
   cloud_firestore: ^0.16.0+1
   firebase_auth: ^0.20.1
   pdf: ^2.1.0
+  numberpicker: ^1.3.0
+  syncfusion_flutter_charts: ^18.4.44+1
+  pie_chart: ^4.0.1
+  syncfusion_flutter_pdf: ^18.1.42-beta
+  path_provider: ^1.6.5
+  open_file: ^3.0.1
   # cloud_firestore: ^0.14.4
   # flutter_svg: ^0.18.1
   # firebase_auth: ^0.18.4+1

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import './analytics.dart';
 class LoginUser extends StatefulWidget {
@@ -51,6 +50,9 @@ class _LoginUserState extends State<LoginUser> {
       body: SingleChildScrollView(
           child: Column(
         children: [
+          SizedBox(height:80),
+          Center(child: Text('Login to your account !',style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 20),)),
+          SizedBox(height:20),
           Image.asset('assets/images/logo.png'),
           Form(
             child: Column(
@@ -60,13 +62,14 @@ class _LoginUserState extends State<LoginUser> {
                   decoration: BoxDecoration(
                       border: Border.all(),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(10)),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
                     initialValue: null,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         labelText: 'Email',
+                        focusColor: Colors.black,
                         prefixIcon: Icon(Icons.email, color: Colors.black)),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     textInputAction: TextInputAction.next,
@@ -93,11 +96,12 @@ class _LoginUserState extends State<LoginUser> {
                     },
                   ),
                 ),
+                SizedBox(height:20),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(10)),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
                     initialValue: null,

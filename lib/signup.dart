@@ -19,26 +19,20 @@ class _SignupScreenState extends State<SignupScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              height: size.height * 0.05,
+              height: size.height * 0.1,
             ),
-            Text(
-              "Welcome To HisabKitab !",
-              style: TextStyle(fontWeight: FontWeight.bold,color: Colors.orange),
-            ),
+            
             Image.asset('assets/images/logo.png'),
+            Center(child: Text(' Simple GST Billing and Stock management software.',style:TextStyle(color:Colors.white,fontStyle: FontStyle.italic)),),
             SizedBox(
               height: size.height * 0.05,
             ),
-            // SvgPicture.asset(
-            //   "assets/icons/chat.svg",
-            //   height: size.height * 0.45,
-            // ),
             SizedBox(
               height: size.height * 0.05,
             ),
             Center(
               child: Container(
-                decoration: BoxDecoration(border: Border.all(),color: Colors.white,borderRadius: BorderRadius.circular(30)),
+                decoration: BoxDecoration(border: Border.all(),color: Colors.white,borderRadius: BorderRadius.circular(20)),
                 margin: EdgeInsets.symmetric(vertical: 10),
                 width: size.width * 0.8,
                 child:  FlatButton(
@@ -56,7 +50,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
            Center(
               child: Container(
-                decoration: BoxDecoration(border: Border.all(),color: Colors.white,borderRadius: BorderRadius.circular(30)),
+                decoration: BoxDecoration(border: Border.all(),color: Colors.white,borderRadius: BorderRadius.circular(20)),
                 margin: EdgeInsets.symmetric(vertical: 10),
                 width: size.width * 0.8,
                 child:  FlatButton(

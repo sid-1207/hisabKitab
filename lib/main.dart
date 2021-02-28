@@ -8,7 +8,9 @@ import './analytics.dart';
 import './purchase.dart';
 import './sales.dart';
 import './profile.dart';
-import './sales_form.dart';
+import './sales_user_form.dart';
+import './pdf.dart';
+import './purchaseUserform.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -31,12 +33,14 @@ class _MyAppState extends State<MyApp> {
       home: SignupScreen(),
       routes: {
         SignUpUser.routeName: (ctx) => SignUpUser(),
-       LoginUser.routeName: (ctx) => LoginUser(),
+        LoginUser.routeName: (ctx) => LoginUser(),
         AnalyticsScreen.routeName: (ctx) => AnalyticsScreen(),
         SalesScreen.routeName: (ctx) => SalesScreen(),
-         PurchaseScreen.routeName: (ctx) => PurchaseScreen(),
-         ProfileScreen.routeName:(ctx)=>ProfileScreen(),
-         SalesForm.routeName:(ctx)=>SalesForm(),
+        PurchaseScreen.routeName: (ctx) => PurchaseScreen(),
+        ProfileScreen.routeName: (ctx) => ProfileScreen(),
+        SalesUserForm.routeName: (ctx) => SalesUserForm(),
+        MakePdf.routeName:(ctx)=>MakePdf(),
+        PurchaseUserForm.routeName:(ctx)=>PurchaseUserForm(),
       },
     );
   }

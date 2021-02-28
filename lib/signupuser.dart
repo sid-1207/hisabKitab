@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
-
+import './analytics.dart';
 class SignUpUser extends StatefulWidget {
   static const routeName = 'signupUser';
   @override
@@ -16,15 +16,19 @@ class _SignUpUserState extends State<SignUpUser> {
   var _userPassword = '';
   var _userName = '';
   var mobileNumber = '';
+  var gstNum = '';
+  var companyName = '';
   bool isLoading = false;
   void _buildUser(
-      String email, String password, String name, String mobileNumber,BuildContext ctx) async {
+      String email,
+      String password,
+      String name,
+      String mobileNumber,
+      String gst,
+      String companyName,
+      BuildContext ctx) async {
     UserCredential authResult;
     try {
-      print("hi");
-      print(email);
-      print(password);
-      print(name);
       authResult = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       await FirebaseFirestore.instance
@@ -34,6 +38,9 @@ class _SignUpUserState extends State<SignUpUser> {
         'name': name,
         'email': email,
         'password': password,
+        'phone': mobileNumber,
+        'gst':gst,
+        'company':companyName,
       });
       // await FirebaseFirestore.instance.collection('users').doc(authResult.user.uid).collection('profile').doc(authResult.user.uid).set({
       //   'name':'Not set',
@@ -44,7 +51,7 @@ class _SignUpUserState extends State<SignUpUser> {
       //   'degree':'Not set',
       //   'skills':'Not set'
       // });
-      //Navigator.of(context).pushReplacementNamed(ProfileFormScreen.routeName);
+      Navigator.of(context).pushReplacementNamed(AnalyticsScreen.routeName);
     } on PlatformException catch (err) {
       var message = "An error occured";
       if (err.message != null) {
@@ -62,15 +69,29 @@ class _SignUpUserState extends State<SignUpUser> {
         backgroundColor: Colors.black,
         body: SingleChildScrollView(
           child: Column(children: [
+            SizedBox(
+              height: 30,
+            ),
             Image.asset('assets/images/logo.png'),
+            Center(
+              child: Text(' Simple GST Billing and Stock management software.',
+                  style: TextStyle(
+                      color: Colors.white, fontStyle: FontStyle.italic)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                SizedBox(
+                  height: 10,
+                ),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(10)),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
                     initialValue: null,
@@ -96,11 +117,49 @@ class _SignUpUserState extends State<SignUpUser> {
                     },
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(10)),
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: TextFormField(
+                    initialValue: null,
+                    decoration: InputDecoration(
+                      labelText: 'Company Name',
+                      prefixIcon: Icon(
+                        Icons.work,
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide a value.';
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      companyName = value;
+                      if (value.isEmpty) {
+                        return 'Please enter valid Name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
                     initialValue: null,
@@ -125,11 +184,14 @@ class _SignUpUserState extends State<SignUpUser> {
                     },
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(10)),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
                     initialValue: null,
@@ -154,11 +216,14 @@ class _SignUpUserState extends State<SignUpUser> {
                     },
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(),
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(30)),
+                      borderRadius: BorderRadius.circular(10)),
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: TextFormField(
                     initialValue: null,
@@ -189,13 +254,48 @@ class _SignUpUserState extends State<SignUpUser> {
                 SizedBox(
                   height: 20,
                 ),
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: TextFormField(
+                    initialValue: null,
+                    decoration: InputDecoration(
+                      labelText: 'GST Number',
+                      prefixIcon: Icon(
+                        Icons.code,
+                        color: Colors.black,
+                      ),
+                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please provide a value.';
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      gstNum = value;
+                      if (value.isEmpty) {
+                        return 'Please enter valid Name';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 isLoading
                     ? CircularProgressIndicator()
                     : Container(
                         decoration: BoxDecoration(
                             border: Border.all(),
                             color: Colors.orange,
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius: BorderRadius.circular(10)),
                         margin: EdgeInsets.symmetric(vertical: 10),
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: FlatButton(
@@ -207,8 +307,8 @@ class _SignUpUserState extends State<SignUpUser> {
                             ),
                             onPressed: () {
                               FocusScope.of(context).unfocus();
-                              _buildUser(_userEmail, _userPassword, _userName,mobileNumber,
-                                  context);
+                              _buildUser(_userEmail, _userPassword, _userName,
+                                  mobileNumber, gstNum, companyName, context);
                             }),
                       ),
               ],

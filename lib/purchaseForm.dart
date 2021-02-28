@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SalesForm extends StatefulWidget {
+
+class PurchaseForm extends StatefulWidget {
   final datetime, companyName, companyAddress;
-  SalesForm(this.datetime, this.companyName, this.companyAddress);
+  PurchaseForm(this.datetime, this.companyName, this.companyAddress);
   @override
-  _SalesFormState createState() => _SalesFormState();
-  static const routeName = 'sales-form';
+  _PurchaseFormState createState() => _PurchaseFormState();
+  static const routeName = 'purchase-form';
 }
 
-class _SalesFormState extends State<SalesForm> {
+class _PurchaseFormState extends State<PurchaseForm> {
   var companyController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text('Sale Details'),
+          title: Text('Purchase Details'),
           backgroundColor: Colors.orange[600],
         ),
         body: SOF(widget.datetime, widget.companyName, widget.companyAddress));
@@ -140,7 +141,7 @@ class _SOFState extends State<SOF> {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(currentUser.uid)
-        .collection('sales')
+        .collection('purchases')
         .doc()
         .set({
       'items': names,
