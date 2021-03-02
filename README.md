@@ -31,11 +31,6 @@ Firebase authentication was also one step where we got stuck followed by generat
 - Nodejs
 - Express
 
-## App Screenshots
-<img src="https://github.com/sid-1207/hisabKitab/blob/main/App%20Screenshots/App_ss1.jpeg" height = 350/><img src="https://github.com/sid-1207/hisabKitab/blob/main/App%20Screenshots/App_ss2.jpeg" height = 350/><img src="https://github.com/sid-1207/hisabKitab/blob/main/App%20Screenshots/App_ss3.jpeg" height = 350/><img src="https://github.com/sid-1207/hisabKitab/blob/main/App%20Screenshots/App_ss4.jpeg" height = 350/>
-
-## Website Screenshots
-<img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot5.jpeg" height = 200/>       <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot6.jpeg" height = 200/>               <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot7.jpeg" height = 200/>               <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot8.jpeg" height = 200/>               <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot1.jpeg" height = 200/>               <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot2.jpeg" height = 200/>              <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot3.jpeg" height = 200/>              <img src="https://github.com/sid-1207/hisabKitab/blob/main/Website%20Screenshots/screenshot4.jpeg" height = 190/>
 
 ### Created for KJ Somaiya Hackthon by
 #### Team TLE <br>
